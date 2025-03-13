@@ -96,6 +96,41 @@ namespace MultApps.Windows
             if (chkAdulto.Checked && chkFeminino.Checked) ;
             {
                 #region Adulto Femino
+                var peso = double.Parse(txtPeso.Text);
+                var altura = double.Parse(txtAltura.Text);
+                var imc = peso / (altura * altura);
+                var textoBase = $@"Meu IMC : {imc:N2} é";
+                if (imc <= 18.5)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} é abaixo do normal";
+                    pictureBox1.Load(ImcImagem.femininoAbaixoDoNormal);
+                }
+                else if (imc < 24.9)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} é normal";
+                    pictureBox1.Load(ImcImagem.femininoNormal);
+                }
+                else if (imc < 29.9)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} Está Sobrepeso";
+                    pictureBox1.Load(ImcImagem.femininoSobrePeso);
+
+                }
+                else if (imc < 34.9)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} Nível Obesidade Grau I";
+                    pictureBox1.Load(ImcImagem.femininoObsidadeGrau1);
+                }
+                else if (imc < 39.9)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} Nível Obesidade Grau II";
+                    pictureBox1.Load(ImcImagem.femininoObsidadeGrau2);
+                }
+                else if (imc < 40.0)
+                {
+                    lblResultadoImc.Text = $@"{textoBase} Nível Obesidade Grau III";
+                    pictureBox1.Load(ImcImagem.femininoObsidadeGrau3);
+                }
                 #endregion
             }
         }
