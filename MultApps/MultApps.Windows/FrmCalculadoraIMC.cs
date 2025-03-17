@@ -23,7 +23,8 @@ namespace MultApps.Windows
             chkAdulto.ForeColor = Color.Gray;
             chkAdulto.Checked = false;
             lblIdade.Text = "Abaixo de 19 anos";
-            ;
+            cmbIdade.Visible = true;
+            lblIdade2.Visible = true;
 
         }
 
@@ -33,6 +34,10 @@ namespace MultApps.Windows
             chkCrianca.ForeColor = Color.Gray;
             chkCrianca.Checked = false;
             lblIdade.Text = "Acima de 19 anos";
+            cmbIdade.Visible = false;
+            lblIdade2.Visible = false;
+
+
         }
         private void chkMasculino_CheckedChanged(object sender, EventArgs e)
         {
@@ -40,6 +45,7 @@ namespace MultApps.Windows
             chkFeminino.ForeColor = Color.Gray;
             chkMasculino.Checked = true;
             chkFeminino.Checked = false;
+            
         }
 
         private void chkFeminino_CheckedChanged(object sender, EventArgs e)
@@ -133,6 +139,7 @@ namespace MultApps.Windows
                 }
                 #endregion
             }
+            
         }
 
         
