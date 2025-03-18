@@ -20,6 +20,13 @@ namespace MultApps.Windows
         private void menuCalculadoraImc_Click(object sender, EventArgs e)
         {
             var form = new FrmCalculadoraIMC();
+            form.MdiParent = this; 
+            form.Show();
+        }
+
+        private void calculadoraDeAposentadoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FrmCalculoAposentadoria();
             form.MdiParent = this;
             form.Show();
         }
