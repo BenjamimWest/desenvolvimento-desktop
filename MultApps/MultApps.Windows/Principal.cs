@@ -29,5 +29,7 @@ namespace MultApps.Windows
             var loading = new SplashScreen();
             loading.ShowDialog();
         }
+
+      
     }
 }

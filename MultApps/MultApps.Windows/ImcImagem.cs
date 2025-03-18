@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MultApps.Windows
 {
-    internal class ImcImagem
+    internal class MultappsImagens
+
     {
         public const string masculinoAbaixoDoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_06.png";
         public const string masculinoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_05.png";
@@ -22,9 +23,9 @@ namespace MultApps.Windows
         public const string femininoObsidadeGrau2 = "https://abeso.org.br/wp-content/uploads/2019/12/imc_m_02.png";
         public const string femininoObsidadeGrau3 = "https://abeso.org.br/wp-content/uploads/2019/12/imc_m_01.png";
 
-        public const string crincaAbaixoDoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_04.png";
-        public const string crincaNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_03.png";
-        public const string crincaSobrePeso = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_02.png";
-        public const string crincaObsidade = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_01.png";
+        public const string criaancaAbaixoDoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_04.png";
+        public const string criancaNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_03.png";
+        public const string criancaSobrePeso = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_02.png";
+        public const string criancaObsidade = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_01.png";
     }
 }
