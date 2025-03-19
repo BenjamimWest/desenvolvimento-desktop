@@ -8,6 +8,7 @@ namespace MultApps.Windows
 {
     internal class ImcImagem
     {
+        // Imagens do Calculo de IMC
         public const string masculinoAbaixoDoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_06.png";
         public const string masculinoNormal = "https://abeso.org.br/wp-content/uploads/2019/12/imc_05.png";
         public const string masculinoSobrePeso = "https://abeso.org.br/wp-content/uploads/2019/12/imc_04.png";
@@ -27,5 +28,8 @@ namespace MultApps.Windows
         public const string criancaSobrePeso = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_02.png";
         public const string criancaObsidade = "https://abeso.org.br/wp-content/uploads/2019/12/imc_c_01.png";
 
+        // Imagens do Calculo de Aposentadoria
+        public const string aposentadoriaAprovada = "https://joinhajoinha.wordpress.com/wp-content/uploads/2012/05/top5.jpg";
+        public const string aposentadoriaReprovada = "https://img.freepik.com/fotos-gratis/homem-senior-pensativo-na-sala-de-estar_329181-14662.jpg";
     }
 }
