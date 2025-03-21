@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblNascimento = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblResultado = new System.Windows.Forms.Label();
             this.lblAnosContribucao = new System.Windows.Forms.Label();
@@ -38,6 +37,8 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.txtAnoscontribucão = new System.Windows.Forms.TextBox();
             this.cmbSexo = new System.Windows.Forms.ComboBox();
+            this.txtDataNascimento = new System.Windows.Forms.TextBox();
+            this.lblNascimento = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.SeaShell;
             this.panel1.Controls.Add(this.lblNascimento);
+            this.panel1.Controls.Add(this.txtDataNascimento);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblResultado);
             this.panel1.Controls.Add(this.lblAnosContribucao);
@@ -59,18 +61,9 @@
             this.panel1.Size = new System.Drawing.Size(776, 456);
             this.panel1.TabIndex = 0;
             // 
-            // lblNascimento
-            // 
-            this.lblNascimento.AutoSize = true;
-            this.lblNascimento.Location = new System.Drawing.Point(27, 46);
-            this.lblNascimento.Name = "lblNascimento";
-            this.lblNascimento.Size = new System.Drawing.Size(35, 13);
-            this.lblNascimento.TabIndex = 8;
-            this.lblNascimento.Text = "label1";
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(453, 57);
+            this.pictureBox1.Location = new System.Drawing.Point(409, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(305, 345);
             this.pictureBox1.TabIndex = 7;
@@ -148,6 +141,24 @@
             this.cmbSexo.Size = new System.Drawing.Size(121, 21);
             this.cmbSexo.TabIndex = 1;
             // 
+            // txtDataNascimento
+            // 
+            this.txtDataNascimento.Location = new System.Drawing.Point(12, 53);
+            this.txtDataNascimento.Name = "txtDataNascimento";
+            this.txtDataNascimento.Size = new System.Drawing.Size(100, 20);
+            this.txtDataNascimento.TabIndex = 9;
+            this.txtDataNascimento.TextChanged += new System.EventHandler(this.txtDataNascimento_TextChanged);
+            // 
+            // lblNascimento
+            // 
+            this.lblNascimento.AutoSize = true;
+            this.lblNascimento.Location = new System.Drawing.Point(34, 56);
+            this.lblNascimento.Name = "lblNascimento";
+            this.lblNascimento.Size = new System.Drawing.Size(20, 13);
+            this.lblNascimento.TabIndex = 10;
+            this.lblNascimento.Text = "\" \"";
+            this.lblNascimento.Visible = false;
+            // 
             // FrmCalculoAposentadoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +186,7 @@
         private System.Windows.Forms.Label lblAnosContribucao;
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtDataNascimento;
         private System.Windows.Forms.Label lblNascimento;
     }
 }
