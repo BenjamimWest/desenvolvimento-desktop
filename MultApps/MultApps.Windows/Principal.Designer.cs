@@ -32,13 +32,15 @@
             this.calculadorasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCalculadoraImc = new System.Windows.Forms.ToolStripMenuItem();
             this.calculadoraDeAposentadoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.suaCarterinhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripPrincipal
             // 
             this.menuStripPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calculadorasToolStripMenuItem});
+            this.calculadorasToolStripMenuItem,
+            this.suaCarterinhaToolStripMenuItem});
             this.menuStripPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuStripPrincipal.Name = "menuStripPrincipal";
             this.menuStripPrincipal.Size = new System.Drawing.Size(800, 24);
@@ -57,7 +59,7 @@
             // menuCalculadoraImc
             // 
             this.menuCalculadoraImc.Name = "menuCalculadoraImc";
-            this.menuCalculadoraImc.Size = new System.Drawing.Size(180, 22);
+            this.menuCalculadoraImc.Size = new System.Drawing.Size(233, 22);
             this.menuCalculadoraImc.Text = "Calculadora de IMC";
             this.menuCalculadoraImc.Click += new System.EventHandler(this.menuCalculadoraImc_Click);
             // 
@@ -67,6 +69,13 @@
             this.calculadoraDeAposentadoriaToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
             this.calculadoraDeAposentadoriaToolStripMenuItem.Text = "Calculadora de Aposentadoria";
             this.calculadoraDeAposentadoriaToolStripMenuItem.Click += new System.EventHandler(this.calculadoraDeAposentadoriaToolStripMenuItem_Click);
+            // 
+            // suaCarterinhaToolStripMenuItem
+            // 
+            this.suaCarterinhaToolStripMenuItem.Name = "suaCarterinhaToolStripMenuItem";
+            this.suaCarterinhaToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
+            this.suaCarterinhaToolStripMenuItem.Text = "Gerador de Carterinha";
+            this.suaCarterinhaToolStripMenuItem.Click += new System.EventHandler(this.suaCarterinhaToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -93,5 +102,6 @@
         private System.Windows.Forms.ToolStripMenuItem calculadorasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuCalculadoraImc;
         private System.Windows.Forms.ToolStripMenuItem calculadoraDeAposentadoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem suaCarterinhaToolStripMenuItem;
     }
 }
