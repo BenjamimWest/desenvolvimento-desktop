@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using Dapper;
 using MultApps.Models.Entities;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Mozilla;
 
 namespace MultApps.Models.Repositories
 {
@@ -26,7 +27,7 @@ namespace MultApps.Models.Repositories
 
                 var resultado = db.Execute(comandoSql, parametros);
                 return resultado > 0;
-                
+
             }
         }
 
@@ -37,8 +38,19 @@ namespace MultApps.Models.Repositories
                 var comandoSql = @"SELECT*FROM categoria";
                 var resultado = db.Query<Categoria>(comandoSql).ToList();
                 return resultado;
-
             }
-            
+
+        }
+
+        public Categoria ObterCategoriaPorId(int id);
+
+
+        
     }
-}
+        
+     
+
+    
+ }
+
+
