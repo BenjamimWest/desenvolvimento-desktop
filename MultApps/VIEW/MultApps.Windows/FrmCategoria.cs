@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +25,13 @@ namespace MultApps.Windows
         
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
+            try {
+                var usuario = new Usuario();
+            
+            }
             var categoria = new Categoria();
             categoria.Nome = txtNome.Text;
-            categoria.Status = (StatusEnum)cmbStatus.SelectedIndex;
+            categoria.Status = (StatusEnum)cmbFiltrar.SelectedIndex;
             
             var categoriaRepository = new CategoriaRepository();
             var resultado = categoriaRepository.CadastrarCategoria(categoria);
@@ -88,6 +92,21 @@ namespace MultApps.Windows
 
             dataGridView1.DataSource = ListaDeCategorias;
             
+            
         }
     }
+    private bool ValidadrSeCamposEstaoPreenchidos()
+    {
+        if (string.IsNullOrWhiteSpace(txtNome.Text))
+        {
+            MessageBox.Show("Campo Nome é obrigatório");
+            return false;
+        }
+        if (cmbFiltrar.SelectedIndex == -1)
+        {
+            MessageBox.Show("Campo Status é obrigatório");
+            return false;
+        }
+        return true;
 }
+

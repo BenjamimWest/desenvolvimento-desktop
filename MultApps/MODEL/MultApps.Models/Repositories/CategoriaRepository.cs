@@ -39,10 +39,20 @@ namespace MultApps.Models.Repositories
                 var resultado = db.Query<Categoria>(comandoSql).ToList();
                 return resultado;
             }
-
+        
         }
 
-        public Categoria ObterCategoriaPorId(int id);
+        public Categoria ObterCategoriaPorId(int id)
+        {
+            using (IDbConnection db = new MySqlConnection()) ;
+            var comandoSql = @"SELECT*FROM categoria WHERE id = @Id";
+            var parametros = new DynamicParameters();
+            parametros.Add("@Id", id);
+            
+            
+            
+        }
+        
 
 
         
