@@ -1,6 +1,6 @@
 ﻿namespace MultApps.Windows
 {
-    partial class FrmCategoria
+    partial class FrmUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCpf = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtCpf = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -90,14 +90,14 @@
             this.txtId.Location = new System.Drawing.Point(236, 48);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 26);
-            this.txtId.TabIndex = 3;
+            this.txtId.TabIndex = 2;
             // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(6, 47);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(192, 26);
-            this.txtNome.TabIndex = 4;
+            this.txtNome.TabIndex = 1;
             // 
             // txtDataCadastro
             // 
@@ -105,7 +105,7 @@
             this.txtDataCadastro.Location = new System.Drawing.Point(547, 48);
             this.txtDataCadastro.Name = "txtDataCadastro";
             this.txtDataCadastro.Size = new System.Drawing.Size(192, 26);
-            this.txtDataCadastro.TabIndex = 6;
+            this.txtDataCadastro.TabIndex = 3;
             // 
             // label4
             // 
@@ -123,7 +123,7 @@
             this.txtDataAlteracao.Location = new System.Drawing.Point(755, 48);
             this.txtDataAlteracao.Name = "txtDataAlteracao";
             this.txtDataAlteracao.Size = new System.Drawing.Size(192, 26);
-            this.txtDataAlteracao.TabIndex = 8;
+            this.txtDataAlteracao.TabIndex = 4;
             // 
             // label5
             // 
@@ -196,6 +196,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastrar nova categoria";
             // 
+            // txtCpf
+            // 
+            this.txtCpf.Enabled = false;
+            this.txtCpf.Location = new System.Drawing.Point(149, 110);
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(100, 26);
+            this.txtCpf.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe Fluent Icons", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(165, 86);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 19);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Cpf";
+            // 
             // txtSenha
             // 
             this.txtSenha.Enabled = false;
@@ -203,7 +221,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '.';
             this.txtSenha.Size = new System.Drawing.Size(100, 26);
-            this.txtSenha.TabIndex = 18;
+            this.txtSenha.TabIndex = 7;
             this.txtSenha.UseSystemPasswordChar = true;
             // 
             // label8
@@ -241,7 +259,7 @@
             this.textBox1.Location = new System.Drawing.Point(29, 110);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 14;
+            this.textBox1.TabIndex = 5;
             // 
             // btnLimpar
             // 
@@ -262,25 +280,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1152, 320);
             this.dataGridView1.TabIndex = 13;
             // 
-            // txtCpf
-            // 
-            this.txtCpf.Enabled = false;
-            this.txtCpf.Location = new System.Drawing.Point(149, 110);
-            this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(100, 26);
-            this.txtCpf.TabIndex = 20;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe Fluent Icons", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(165, 86);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 19);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Cpf";
-            // 
-            // FrmCategoria
+            // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,7 +291,7 @@
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe Fluent Icons", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmCategoria";
+            this.Name = "FrmUsuario";
             this.Text = "FrmCategoria";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

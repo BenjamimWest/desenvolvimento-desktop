@@ -6,6 +6,8 @@ using Dapper;
 using MultApps.Models.Entities;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Mozilla;
+using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Security;
 
 namespace MultApps.Models.Repositories
 {
@@ -58,7 +60,19 @@ namespace MultApps.Models.Repositories
         
     }
         
-     
+    private void LimparCampos()
+    { 
+        txtNome.clear();
+        txtId.clear();
+        cmbStatus.SelectedIndex = -1;
+        txtSenha.clear();
+        txtEmail.clear();
+        txtDataCadastro.clear();
+        txtUltimoAcesso.Clear();
+        CmbStatus.SelectedIndex = -1;
+
+
+    }
 
     
  }

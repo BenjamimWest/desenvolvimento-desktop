@@ -15,9 +15,9 @@ using MultApps.Models.Repositories;
 
 namespace MultApps.Windows
 {
-    public partial class FrmCategoria : Form
+    public partial class FrmUsuario : Form
     {
-        public FrmCategoria()
+        public FrmUsuario()
         {
             InitializeComponent();
             CarregarTodasCategorias(); 
