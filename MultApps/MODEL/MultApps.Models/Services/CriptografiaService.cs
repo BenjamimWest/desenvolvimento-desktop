@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace MultApps.Models.Services
 {
-    public class CriptografiaService
+    public static class CriptografiaService
     {
-        public string Criptografar(string senha)
-
+        public static string Criptografar(string senha)
         {
-            var bytes = Encoding.UTF8.GetBytes(senha);
-            var hash = new System.Security.Cryptography.SHA256Managed().ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(senha);
+            return passwordHash;
         }
 
-        public bool CompararSenhas(string senha, string senhaCriptografada)
+        public static bool Verificar(string senha, string senhaCriptografada)
         {
-            var senhaCriptografadaNova = Criptografar(senha);
-            return senhaCriptografada == senhaCriptografadaNova;
+            return BCrypt.Net.BCrypt.Verify(senha, senhaCriptografada);
         }
     }
+
 }

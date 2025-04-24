@@ -139,12 +139,14 @@
             // 
             this.cmbFiltrar.FormattingEnabled = true;
             this.cmbFiltrar.Items.AddRange(new object[] {
+            "Todos",
             "Inativo",
             "Ativo"});
             this.cmbFiltrar.Location = new System.Drawing.Point(358, 47);
             this.cmbFiltrar.Name = "cmbFiltrar";
             this.cmbFiltrar.Size = new System.Drawing.Size(169, 27);
             this.cmbFiltrar.TabIndex = 9;
+            this.cmbFiltrar.SelectedIndexChanged += new System.EventHandler(this.cmbFiltrar_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -285,7 +287,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(1067, 658);
+            this.ClientSize = new System.Drawing.Size(1053, 658);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);

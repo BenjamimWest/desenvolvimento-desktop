@@ -20,19 +20,19 @@ namespace MultApps.Windows
         public FrmUsuario()
         {
             InitializeComponent();
-            CarregarTodasCategorias(); 
+            CarregarTodasCategorias();
         }
-        
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try {
                 var usuario = new Usuario();
-            
+
             }
             var categoria = new Categoria();
             categoria.Nome = txtNome.Text;
             categoria.Status = (StatusEnum)cmbFiltrar.SelectedIndex;
-            
+
             var categoriaRepository = new CategoriaRepository();
             var resultado = categoriaRepository.CadastrarCategoria(categoria);
             if (resultado)
@@ -50,7 +50,7 @@ namespace MultApps.Windows
             var categoriaRepository = new CategoriaRepository();
             var ListaDeCategorias = categoriaRepository.listarTodasCategorias();
             dataGridView1.DataSource = ListaDeCategorias;
-            
+
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
@@ -91,22 +91,45 @@ namespace MultApps.Windows
             });
 
             dataGridView1.DataSource = ListaDeCategorias;
-            
-            
+
+
+        }
+
+        private void cmbFiltrar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbFiltrar.SelectedIndex)
+            {
+                case 0: // Todos
+                    CarregarTodasCategorias();
+                    break;
+                case 1:
+                    var usuarioAtivos = UsuarioRepository.ListarUsuariosAtivos(1);
+                    break;
+
+                case 2:
+                    var usuarioInativos = UsuarioRepository.ListarUsuariosInativos(0);
+
+                    break;
+                case 3:
+                    var usuarioInativos = UsuarioRepository.ListarUsuarioPorStatus("");
+                    break;
+
+            }
+        }
+        private bool TemCamposEmBranco()
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
+            {
+                MessageBox.Show("Campo Nome é obrigatório");
+                return false;
+            }
+            if (cmbFiltrar.SelectedIndex == -1)
+            {
+                MessageBox.Show("Campo Status é obrigatório");
+                return false;
+            }
+            return true;
         }
     }
-    private bool ValidadrSeCamposEstaoPreenchidos()
-    {
-        if (string.IsNullOrWhiteSpace(txtNome.Text))
-        {
-            MessageBox.Show("Campo Nome é obrigatório");
-            return false;
-        }
-        if (cmbFiltrar.SelectedIndex == -1)
-        {
-            MessageBox.Show("Campo Status é obrigatório");
-            return false;
-        }
-        return true;
 }
 
