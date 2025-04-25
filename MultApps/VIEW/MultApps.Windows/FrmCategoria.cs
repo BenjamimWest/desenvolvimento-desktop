@@ -3,54 +3,69 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.SqlServer.Server;
 using MultApps.Models.Entities;
 using MultApps.Models.Enums;
 using MultApps.Models.Repositories;
 
 namespace MultApps.Windows
 {
-    public partial class FrmUsuario : Form
+    public partial class FrmCategoria : Form
     {
-        public FrmUsuario()
+        public FrmCategoria()
         {
             InitializeComponent();
             CarregarTodasCategorias();
         }
-
+        
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            try {
-                var usuario = new Usuario();
-
-            }
             var categoria = new Categoria();
             categoria.Nome = txtNome.Text;
-            categoria.Status = (StatusEnum)cmbFiltrar.SelectedIndex;
-
+            categoria.Status = (StatusEnum)cmbStatus.SelectedIndex;
+            
             var categoriaRepository = new CategoriaRepository();
-            var resultado = categoriaRepository.CadastrarCategoria(categoria);
-            if (resultado)
+
+            if (string.IsNullOrEmpty(txtId.Text))
             {
-                MessageBox.Show("Categoria cadastra com sucesso");
+                var resultado = categoriaRepository.CadastrarCategoria(categoria);
+                if (resultado)
+                {
+                    MessageBox.Show("Categoria cadastra com sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar categoria");
+                }
             }
             else
             {
-                MessageBox.Show("Erro ao cadastrar categoria");
+                categoria.Id = int.Parse(txtId.Text);
+                var resultado = categoriaRepository.AtualizarCategoria(categoria);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Categoria atualizada com sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao atualizar categoria");
+                }
+
             }
+
+
+            CarregarTodasCategorias();
+
         }
 
         private void CarregarTodasCategorias()
         {
             var categoriaRepository = new CategoriaRepository();
-            var ListaDeCategorias = categoriaRepository.listarTodasCategorias();
-            dataGridView1.DataSource = ListaDeCategorias;
-
+            var listaDeCategorias = categoriaRepository.ListarTodasCategorias();
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
@@ -59,77 +74,134 @@ namespace MultApps.Windows
             {
                 DataPropertyName = "Id",
                 HeaderText = "Id",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
-                MinimumWidth = 200,
-            });
+                MinimumWidth = 100,
 
+            });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Nome",
                 HeaderText = "Nome da Categoria",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
-                MinimumWidth = 200,
+                MinimumWidth = 300,
+
             });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "DataCadrastro",
+                DataPropertyName = "DataCadastro",
                 HeaderText = "Data de Cadastro",
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
-                MinimumWidth = 200,
+                MinimumWidth = 200
+                
             });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "DataAlteracaoo",
+                DataPropertyName = "DataAlteracao",
                 HeaderText = "Data de Alteração",
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:MM" },
-                MinimumWidth = 200,
+                MinimumWidth = 200
+
             });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Status",
                 HeaderText = "Status",
+                DefaultCellStyle = new DataGridViewCellStyle {
+                    
+                    }
             });
 
-            dataGridView1.DataSource = ListaDeCategorias;
+            dataGridView1.DataSource = listaDeCategorias;
 
+
+            //Depois de preencher será chamado o metodo CellFormating para verificar o status e pintar
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
 
         }
 
-        private void cmbFiltrar_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            switch (cmbFiltrar.SelectedIndex)
+            if (dataGridView1.Columns[e.ColumnIndex].DataPropertyName == "Status")
             {
-                case 0: // Todos
-                    CarregarTodasCategorias();
-                    break;
-                case 1:
-                    var usuarioAtivos = UsuarioRepository.ListarUsuariosAtivos(1);
-                    break;
-
-                case 2:
-                    var usuarioInativos = UsuarioRepository.ListarUsuariosInativos(0);
-
-                    break;
-                case 3:
-                    var usuarioInativos = UsuarioRepository.ListarUsuarioPorStatus("");
-                    break;
-
+                if (e.Value != null)
+                {
+                    StatusEnum status = (StatusEnum)e.Value;
+                    switch (status)
+                    {
+                        case StatusEnum.Inativo:
+                            e.CellStyle.ForeColor = Color.Gray;
+                            break;
+                        case StatusEnum.Ativo:
+                            e.CellStyle.ForeColor = Color.Blue;
+                            break;
+                        case StatusEnum.Excluido:
+                            e.CellStyle.ForeColor = Color.Red;
+                            break;
+                    }
+                }
             }
         }
-        private bool TemCamposEmBranco()
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text))
+            if (e.RowIndex < 0)
             {
-                MessageBox.Show("Campo Nome é obrigatório");
-                return false;
+                MessageBox.Show($"Houve um erro ao clicar duas vezes sobre o Grid");
+                return;
             }
-            if (cmbFiltrar.SelectedIndex == -1)
+            
+            // Obtenha a linha selecionada
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+            // Obtenha o ID da categoria da linha selecionada
+            var categoriaId = (int)row.Cells[0].Value;
+
+            // Use o método ObterCategoriaPorId para buscar os dados da categoria no banco de dados
+            var categoriaRepository = new CategoriaRepository();
+            var categoria = categoriaRepository.ObterCategoriaPorId(categoriaId);
+
+            if (categoria == null)
             {
-                MessageBox.Show("Campo Status é obrigatório");
-                return false;
+                MessageBox.Show($"Categoria: #{categoriaId} não encontrada");
+                return;
             }
-            return true;
+            // Preencha os campos de edição com os dados obtidos
+            txtId.Text = categoria.Id.ToString();
+            txtNome.Text = categoria.Nome;
+            cmbStatus.SelectedIndex = (int)categoria.Status;
+            txtDataCadastro.Text = categoria.DataCriacao.ToString("dd/MM/yyyy HH:mm");
+            txtDataAlteracao.Text = categoria.DataAlteracao.ToString("dd/MM/yyyy HH:mm");
+
+            btnDeletar.Enabled = true;
+            btnSalvar.Text = "Salvar alterações";
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtId.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtDataCadastro.Text = string.Empty;
+            txtDataAlteracao.Text = string.Empty;
+            cmbStatus.SelectedIndex = -1;
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            var categoriaId = int.Parse(txtId.Text);
+
+            var categoriaRepository = new CategoriaRepository();
+            var sucesso = categoriaRepository.DeletarCategoria(categoriaId);
+
+            if (sucesso)
+            {
+                MessageBox.Show("Categoria removida com sucesso");
+                CarregarTodasCategorias();
+            }
+            else
+            {
+                MessageBox.Show($"Não foi possível deletar a categoria: {txtNome.Text}");
+            }
+
+            btnDeletar.Enabled = false;
+            btnLimpar_Click(sender, e);
         }
     }
 }
-
