@@ -17,6 +17,6 @@ namespace MultApps.Windows
             InitializeComponent();
         }
 
-       
+     
     }
 }
