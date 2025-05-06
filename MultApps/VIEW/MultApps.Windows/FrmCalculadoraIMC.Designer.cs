@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picBoxImc = new System.Windows.Forms.PictureBox();
+            this.lblIdadeCmb = new System.Windows.Forms.Label();
+            this.cmbIdade = new System.Windows.Forms.ComboBox();
+            this.txtAltura = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblResultadoImc = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.lblIdade = new System.Windows.Forms.Label();
@@ -38,13 +45,6 @@
             this.chkCrianca = new System.Windows.Forms.CheckBox();
             this.chkAdulto = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblIdadeCmb = new System.Windows.Forms.Label();
-            this.cmbIdade = new System.Windows.Forms.ComboBox();
-            this.txtAltura = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.picBoxImc = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxImc)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,92 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(969, 527);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // picBoxImc
+            // 
+            this.picBoxImc.Location = new System.Drawing.Point(626, 211);
+            this.picBoxImc.Name = "picBoxImc";
+            this.picBoxImc.Size = new System.Drawing.Size(318, 298);
+            this.picBoxImc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxImc.TabIndex = 20;
+            this.picBoxImc.TabStop = false;
+            // 
+            // lblIdadeCmb
+            // 
+            this.lblIdadeCmb.AutoSize = true;
+            this.lblIdadeCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdadeCmb.Location = new System.Drawing.Point(377, 208);
+            this.lblIdadeCmb.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblIdadeCmb.Name = "lblIdadeCmb";
+            this.lblIdadeCmb.Size = new System.Drawing.Size(65, 25);
+            this.lblIdadeCmb.TabIndex = 19;
+            this.lblIdadeCmb.Text = "Idade";
+            this.lblIdadeCmb.Visible = false;
+            // 
+            // cmbIdade
+            // 
+            this.cmbIdade.FormattingEnabled = true;
+            this.cmbIdade.Items.AddRange(new object[] {
+            "1 ano",
+            "2 anos",
+            "3 anos",
+            "4 anos",
+            "5 anos",
+            "6 anos",
+            "7 anos",
+            "8 anos",
+            "9 anos",
+            "10 anos",
+            "11 anos",
+            "12 anos",
+            "13 anos",
+            "14 anos",
+            "15 anos",
+            "16 anos",
+            "17 anos",
+            "18 anos"});
+            this.cmbIdade.Location = new System.Drawing.Point(382, 236);
+            this.cmbIdade.Name = "cmbIdade";
+            this.cmbIdade.Size = new System.Drawing.Size(213, 32);
+            this.cmbIdade.TabIndex = 14;
+            this.cmbIdade.Visible = false;
+            // 
+            // txtAltura
+            // 
+            this.txtAltura.Location = new System.Drawing.Point(231, 239);
+            this.txtAltura.Name = "txtAltura";
+            this.txtAltura.Size = new System.Drawing.Size(100, 29);
+            this.txtAltura.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(226, 208);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 25);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Altura";
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Location = new System.Drawing.Point(78, 239);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(100, 29);
+            this.txtPeso.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(73, 211);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 25);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Peso";
             // 
             // lblResultadoImc
             // 
@@ -156,6 +242,7 @@
             this.chkCrianca.TabIndex = 2;
             this.chkCrianca.Text = "Criança";
             this.chkCrianca.UseVisualStyleBackColor = true;
+            this.chkCrianca.CheckedChanged += new System.EventHandler(this.chkCrianca_CheckedChanged_1);
             this.chkCrianca.Click += new System.EventHandler(this.chkCrianca_CheckedChanged);
             // 
             // chkAdulto
@@ -183,91 +270,6 @@
             this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Selecione";
-            // 
-            // lblIdadeCmb
-            // 
-            this.lblIdadeCmb.AutoSize = true;
-            this.lblIdadeCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdadeCmb.Location = new System.Drawing.Point(377, 208);
-            this.lblIdadeCmb.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblIdadeCmb.Name = "lblIdadeCmb";
-            this.lblIdadeCmb.Size = new System.Drawing.Size(65, 25);
-            this.lblIdadeCmb.TabIndex = 19;
-            this.lblIdadeCmb.Text = "Idade";
-            this.lblIdadeCmb.Visible = false;
-            // 
-            // cmbIdade
-            // 
-            this.cmbIdade.FormattingEnabled = true;
-            this.cmbIdade.Items.AddRange(new object[] {
-            "1 ano",
-            "2 anos",
-            "3 anos",
-            "4 anos",
-            "5 anos",
-            "6 anos",
-            "7 anos",
-            "8 anos",
-            "9 anos",
-            "10 anos",
-            "11 anos",
-            "12 anos",
-            "13 anos",
-            "14 anos",
-            "15 anos",
-            "16 anos",
-            "17 anos",
-            "18 anos"});
-            this.cmbIdade.Location = new System.Drawing.Point(382, 236);
-            this.cmbIdade.Name = "cmbIdade";
-            this.cmbIdade.Size = new System.Drawing.Size(213, 32);
-            this.cmbIdade.TabIndex = 14;
-            this.cmbIdade.Visible = false;
-            // 
-            // txtAltura
-            // 
-            this.txtAltura.Location = new System.Drawing.Point(231, 239);
-            this.txtAltura.Name = "txtAltura";
-            this.txtAltura.Size = new System.Drawing.Size(100, 29);
-            this.txtAltura.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(226, 208);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 25);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Altura";
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Location = new System.Drawing.Point(78, 239);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(100, 29);
-            this.txtPeso.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(73, 211);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 25);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Peso";
-            // 
-            // picBoxImc
-            // 
-            this.picBoxImc.Location = new System.Drawing.Point(626, 211);
-            this.picBoxImc.Name = "picBoxImc";
-            this.picBoxImc.Size = new System.Drawing.Size(318, 298);
-            this.picBoxImc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxImc.TabIndex = 20;
-            this.picBoxImc.TabStop = false;
             // 
             // FrmCalculadoraIMC
             // 

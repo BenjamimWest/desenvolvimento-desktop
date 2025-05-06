@@ -286,7 +286,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(538, 642);
+            this.label9.Location = new System.Drawing.Point(538, 626);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 17);
@@ -295,7 +295,7 @@
             // 
             // txtEstoque
             // 
-            this.txtEstoque.Location = new System.Drawing.Point(541, 671);
+            this.txtEstoque.Location = new System.Drawing.Point(541, 646);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEstoque.Multiline = true;
             this.txtEstoque.Name = "txtEstoque";
@@ -310,9 +310,9 @@
             this.label10.Location = new System.Drawing.Point(77, 727);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 18);
+            this.label10.Size = new System.Drawing.Size(107, 18);
             this.label10.TabIndex = 23;
-            this.label10.Text = "URL da Imagem";
+            this.label10.Text = "URL da Imagem:";
             // 
             // txtUrl_da_Imagem
             // 
@@ -421,7 +421,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 749);
+            this.ClientSize = new System.Drawing.Size(947, 746);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.chkInativo);
